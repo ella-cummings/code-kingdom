@@ -11,6 +11,7 @@ import EndScreen from './scenes/EndScreen.js';
 import DialogSystem from './systems/DialogSystem.js';
 import QuestionPopup from './systems/QuestionPopup.js';
 import LessonScreen from './systems/LessonScreen.js';
+import VolumeSlider from './scenes/VolumeSlider.js';
 
 const config = {
   type: Phaser.AUTO,
@@ -45,6 +46,7 @@ const config = {
     DialogSystem,
     QuestionPopup,
     LessonScreen,
+    VolumeSlider,
   ],
 };
 

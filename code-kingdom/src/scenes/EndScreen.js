@@ -16,7 +16,10 @@ export default class EndScreen extends Phaser.Scene {
     gameState.currentLevel = 'end';
 
     // ── Background ────────────────────────────────────────────────────────────
-    this.add.image(400, 225, 'village_bg').setScale(0.732).setDepth(0);
+    this.add.tileSprite(0, 0, 800, 450, 'village_bg')
+      .setOrigin(0, 0)
+      .setTileScale(1.86, 1.86)
+      .setDepth(0);
     this.add.rectangle(400, 225, 800, 450, 0x000000, 0.6).setDepth(1);
 
     // ── Camera fade in ────────────────────────────────────────────────────────

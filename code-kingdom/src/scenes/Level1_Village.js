@@ -10,7 +10,7 @@ import {
 import { VILLAGE_Q1, VILLAGE_Q2, VILLAGE_Q3 } from '../data/questionData.js';
 
 const LEVEL_WIDTH   = 3000;
-const BG_SCALE      = 0.732;
+const BG_SCALE      = 1.86; // village.png is 1121×242; scale to fill 450px height
 const BG_TILE_Y     = 0;
 const GROUND_Y      = 430;
 const PLAYER_SPEED  = 180;
@@ -20,7 +20,7 @@ const TALK_RANGE    = 100;  // px proximity to show TALK indicator
 
 const SCALE = {
   player:    0.062,
-  villager1: 0.057,
+  villager1: 0.171,
   villager2: 0.052,
   villager3: 0.075,
   villager4: 0.050,

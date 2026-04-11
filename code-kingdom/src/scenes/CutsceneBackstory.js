@@ -17,8 +17,11 @@ export default class CutsceneBackstory extends Phaser.Scene {
   }
 
   create() {
-    // Background — same cover scale as HomeScreen
-    this.add.image(400, 225, 'village_bg').setScale(0.732).setDepth(0);
+    // Background — tiled horizontally, scaled to fill 450px height
+    this.add.tileSprite(0, 0, 800, 450, 'village_bg')
+      .setOrigin(0, 0)
+      .setTileScale(1.86, 1.86)
+      .setDepth(0);
     this.createClouds();
     this.add.rectangle(400, 225, 800, 450, 0x000000, 0.55).setDepth(2);
 
