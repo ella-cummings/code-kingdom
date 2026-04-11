@@ -9,8 +9,8 @@ import {
 } from '../data/dialogData.js';
 import { CAULDRON_Q1, CAULDRON_Q2, CAULDRON_Q3 } from '../data/questionData.js';
 
-// Level 2 stays in the village — reuse village_bg (17.png, scale 0.732)
-const BG_SCALE  = 0.732;
+// Level 2 stays in the village — reuse village_bg (17.png); tile to fill 450px height
+const BG_SCALE  = 1.86;
 const GROUND_Y  = 430;
 
 const SCALE = {
@@ -38,7 +38,10 @@ export default class Level2_Cauldron extends Phaser.Scene {
     gameState.currentLevel = 'level2';
 
     // ── Background ────────────────────────────────────────────────────────────
-    this.add.image(400, 225, 'village_bg').setScale(BG_SCALE).setDepth(0);
+    this.add.tileSprite(0, 0, 800, 450, 'village_bg')
+      .setOrigin(0, 0)
+      .setTileScale(BG_SCALE, BG_SCALE)
+      .setDepth(0);
 
     // ── Clouds ────────────────────────────────────────────────────────────────
     this.createClouds();

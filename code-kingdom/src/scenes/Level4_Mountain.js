@@ -10,8 +10,9 @@ const PLAYER_SPEED = 180;
 const JUMP_VEL     = -370;
 const WALK_MS      = 200;
 const TALK_RANGE   = 100;
-const CHEST_X      = 210;   // just right of player start (x=120)
-const BARRIER_X    = 900;   // invisible wall at chasm
+const CHEST_X           = 210;   // just right of player start (x=120)
+const CHEST_BARRIER_X   = 235;   // blocks player past the chest until bridge built
+const BARRIER_X         = 900;   // invisible wall at chasm
 
 export default class Level4_Mountain extends Phaser.Scene {
   constructor() {
@@ -51,6 +52,14 @@ export default class Level4_Mountain extends Phaser.Scene {
       .refreshBody()
       .setVisible(false);
 
+    // ── Invisible barrier past chest (removed when bridge is built) ───────────
+    this.chestBarrier = this.physics.add.staticGroup();
+    this.chestBarrier
+      .create(CHEST_BARRIER_X, GROUND_Y - 100, null)
+      .setDisplaySize(20, 200)
+      .refreshBody()
+      .setVisible(false);
+
     // ── Invisible barrier at chasm ─────────────────────────────────────────────
     this.barrier = this.physics.add.staticGroup();
     this.barrier
@@ -68,6 +77,7 @@ export default class Level4_Mountain extends Phaser.Scene {
       .setCollideWorldBounds(true);
 
     this.physics.add.collider(this.player, ground);
+    this.chestBarrierCollider = this.physics.add.collider(this.player, this.chestBarrier);
     this.barrierCollider = this.physics.add.collider(this.player, this.barrier);
     this.walkFrame = 0;
     this.walkTimer = 0;
@@ -173,6 +183,8 @@ export default class Level4_Mountain extends Phaser.Scene {
   buildBridge() {
     gameState.bridgeBuilt = true;
 
+    this.chestBarrierCollider.destroy();
+    this.chestBarrier.clear(true, true);
     this.barrierCollider.destroy();
     this.barrier.clear(true, true);
 

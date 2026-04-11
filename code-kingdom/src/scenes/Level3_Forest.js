@@ -34,8 +34,9 @@ export default class Level3_Forest extends Phaser.Scene {
   create() {
     gameState.currentLevel = 'level3';
 
-    // ── Background (tiled for scrolling) ──────────────────────────────────────
-    const bgScale = Math.max(800 / 1470, 450 / 712);
+    // ── Background (world-space tileSprite, no parallax) ──────────────────────
+    // Scale to fill 450px height exactly; tiles horizontally across the level.
+    const bgScale = 450 / 712;
     this.bgTile = this.add
       .tileSprite(0, 0, LEVEL_WIDTH, 450, 'forest_bg')
       .setOrigin(0, 0)
@@ -87,7 +88,7 @@ export default class Level3_Forest extends Phaser.Scene {
 
     // ── Owl (x=250, feet on ground) ───────────────────────────────────────────
     this.add.image(250, GROUND_Y, 'owl')
-      .setScale(0.08)
+      .setScale(0.16)
       .setOrigin(0.5, 1)
       .setDepth(3);
 
